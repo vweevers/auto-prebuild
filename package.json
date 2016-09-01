@@ -1,7 +1,7 @@
 {
   "name": "auto-prebuild",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Testing CI prebuilds",
   "license": "MIT",
   "author": "Vincent Weevers",
@@ -16,8 +16,7 @@
     "nan": "~2.2.0",
     "prebuild": "~4.1.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "keywords": [],
   "engines": {
     "node": ">=4.0.0",
