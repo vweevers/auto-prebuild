@@ -1,0 +1,30 @@
+{
+  "name": "auto-prebuild",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Testing CI prebuilds",
+  "license": "MIT",
+  "author": "Vincent Weevers",
+  "scripts": {
+    "test": "node index.js",
+    "install": "prebuild --install",
+    "rebuild": "prebuild --compile",
+    "prebuild": "prebuild --all --strip"
+  },
+  "dependencies": {
+    "bindings": "~1.2.1",
+    "nan": "~2.2.0",
+    "prebuild": "~4.1.1"
+  },
+  "devDependencies": {
+  },
+  "keywords": [],
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=2.0.0"
+  },
+  "gypfile": true,
+  "repository": "https://github.com/vweevers/auto-prebuild",
+  "bugs": "https://github.com/vweevers/auto-prebuild/issues",
+  "homepage": "https://github.com/vweevers/auto-prebuild"
+}

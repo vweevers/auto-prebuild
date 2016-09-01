@@ -1,0 +1,30 @@
+version: {build}
+build: off
+shallow_clone: true
+skip_tags: false
+
+environment:
+  gh_token:
+    secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
+  matrix:
+    - nodejs_version: "4.4.3"
+    - nodejs_version: "5.11.0"
+    - nodejs_version: "6.0.0"
+
+platform:
+  - x86
+  - x64
+
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  - npm -g i npm@latest
+  - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
+  - npm i --build-from-source
+
+test_script:
+  - npm test
+
+on_success:
+  - if %APPVEYOR_REPO_TAG%==true prebuild -b $env:nodejs_version --strip -u %gh_token%
+  - if %APPVEYOR_REPO_TAG%==false prebuild -b $env:nodejs_version --strip
+  - for %i in (prebuilds\*) do appveyor PushArtifact %i
