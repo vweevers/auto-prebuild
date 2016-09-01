@@ -25,6 +25,6 @@ test_script:
   - npm test
 
 on_success:
-  - if %APPVEYOR_REPO_TAG%==true prebuild -b %nodejs_version% --strip -u %gh_token%
-  - if %APPVEYOR_REPO_TAG%==false prebuild -b %nodejs_version% --strip
+  - prebuild -b %nodejs_version% --strip
   - for %%i in (prebuilds\*) do appveyor PushArtifact %%i
+  - if %APPVEYOR_REPO_TAG%==true prebuild --upload-all %gh_token%
