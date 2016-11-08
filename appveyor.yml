@@ -19,12 +19,12 @@ install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - npm -g i npm@latest
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
-  - npm i --build-from-source
+  - npm i --ignore-scripts
+  - prebuild -b %nodejs_version% --strip
 
 test_script:
   - npm test
 
 on_success:
-  - prebuild -b %nodejs_version% --strip
   - for %%i in (prebuilds\*) do appveyor PushArtifact %%i
   - if %APPVEYOR_REPO_TAG%==true prebuild --upload-all %gh_token%
