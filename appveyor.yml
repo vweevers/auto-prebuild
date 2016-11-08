@@ -7,9 +7,10 @@ environment:
   gh_token:
     secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
   matrix:
-    - nodejs_version: "4.4.3"
-    - nodejs_version: "5.11.0"
-    - nodejs_version: "6.0.0"
+    - nodejs_version: "4"
+    - nodejs_version: "5"
+    - nodejs_version: "6"
+    - nodejs_version: "7"
 
 platform:
   - x86
