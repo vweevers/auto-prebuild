@@ -21,7 +21,7 @@ install:
   - npm -g i npm@latest
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
   - npm i --ignore-scripts
-  - ps: prebuild -b $(node -v) --strip 2>$null
+  - for /f %%i in ('node -v') do prebuild -b %%i --strip
 
 test_script:
   - npm test
