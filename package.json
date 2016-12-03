@@ -1,7 +1,7 @@
 {
   "name": "auto-prebuild",
   "private": true,
-  "version": "0.0.4-beta1",
+  "version": "0.0.4-beta2",
   "description": "Testing CI prebuilds",
   "license": "MIT",
   "author": "Vincent Weevers",
