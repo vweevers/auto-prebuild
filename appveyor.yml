@@ -28,4 +28,4 @@ test_script:
 
 on_success:
   - ps: Push-AppveyorArtifact $(dir prebuilds\*)
-  - ps: if (git describe --exact-match 2>$null) { prebuild --upload-all $env:token 2>$null }
+  - ps: if (git describe --exact-match 2>$null) { prebuild --upload-all $env:token 2>&1 }
