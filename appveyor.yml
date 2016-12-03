@@ -27,5 +27,5 @@ test_script:
   - npm test
 
 on_success:
-  - ps: appveyor PushArtifact $(dir -name prebuilds\*)
+  - ps: Push-AppveyorArtifact $(dir prebuilds\*)
   - ps: if (git describe --exact-match 2>$null) { prebuild -u $env:token 2>$null }
