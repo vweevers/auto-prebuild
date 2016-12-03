@@ -1,6 +1,6 @@
 version: "{build}"
 build: off
-shallow_clone: true
+shallow_clone: false
 skip_tags: true
 
 environment:
