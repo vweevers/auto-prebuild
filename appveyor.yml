@@ -30,9 +30,9 @@ on_success:
   - ps: Push-AppveyorArtifact $(dir prebuilds\*)
   - ps: git describe
   - ps: |
-    git describe --exact-match 2>$null
+      git describe --exact-match 2>$null
 
-    if ($LastExitCode -eq 0) {
-      Write-Host "tagged"
-      prebuild -u $env:token 2>$null
-    }
+      if ($LastExitCode -eq 0) {
+        Write-Host "tagged"
+        prebuild -u $env:token 2>$null
+      }
