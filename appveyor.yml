@@ -4,7 +4,7 @@ shallow_clone: true
 skip_tags: true
 
 environment:
-  gh_token:
+  token:
     secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
   matrix:
     - nodejs_version: "4"
@@ -21,11 +21,11 @@ install:
   - npm -g i npm@latest
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
   - npm i --ignore-scripts
-  - ps: prebuild -b $(node -v) --strip
+  - ps: prebuild -b $(node -v) --strip 2>$null
 
 test_script:
   - npm test
 
 on_success:
   - ps: appveyor PushArtifact $(dir -name prebuilds\*)
-  - ps: if (git describe --exact-match 2>$null) { prebuild -u $env:gh_token }
+  - ps: if (git describe --exact-match 2>$null) { prebuild -u $env:token 2>$null }
