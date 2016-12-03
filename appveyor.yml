@@ -1,7 +1,7 @@
 version: "{build}"
 build: off
-shallow_clone: false
-skip_tags: true
+shallow_clone: true
+skip_tags: false
 
 environment:
   token:
@@ -28,5 +28,4 @@ test_script:
 
 on_success:
   - for %%i in (prebuilds\*) do appveyor PushArtifact %%i
-  - git describe --exact-match 2> nul
-  - if %ERRORLEVEL% equ 0 prebuild --upload-all %token%
+  - if %APPVEYOR_REPO_TAG%==true prebuild --upload-all %token%
