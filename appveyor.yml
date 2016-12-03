@@ -27,5 +27,6 @@ test_script:
   - npm test
 
 on_success:
-  - ps: Push-AppveyorArtifact $(dir prebuilds\*)
-  - ps: if (git describe --exact-match 2>$null) { prebuild --upload-all $env:token 2>&1 }
+  - for %%i in (prebuilds\*) do appveyor PushArtifact %%i
+  - git describe --exact-match 2> nul
+  - if %ERRORLEVEL% equ 0 prebuild --upload-all %token%
