@@ -7,7 +7,7 @@
   "author": "Vincent Weevers",
   "scripts": {
     "install": "prebuild-install || node-gyp rebuild",
-    "test": "node index.js && prebuild-ci",
+    "test": "node index.js",
     "rebuild": "prebuild --compile",
     "prebuild": "prebuild --all --strip --verbose"
   },
