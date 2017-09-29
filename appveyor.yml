@@ -22,7 +22,7 @@ install:
   - ps: if ($env:nodejs_version -eq "5") { npm i npm@latest -g }
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
   - npm i --ignore-scripts
-  - ps: prebuild -t $(node -v) --strip --verbose
+  - prebuild --strip --verbose
 
 test_script:
   - npm test
