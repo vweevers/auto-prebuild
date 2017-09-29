@@ -6,17 +6,20 @@
   "license": "MIT",
   "author": "Vincent Weevers",
   "scripts": {
-    "test": "node index.js",
-    "install": "prebuild --install",
+    "install": "prebuild-install || node-gyp rebuild",
+    "test": "node index.js && prebuild-ci",
     "rebuild": "prebuild --compile",
-    "prebuild": "prebuild --all --strip"
+    "prebuild": "prebuild --all --strip --verbose"
   },
   "dependencies": {
-    "bindings": "~1.2.1",
-    "nan": "~2.2.0",
-    "prebuild": "~4.4.0"
+    "bindings": "~1.3.0",
+    "nan": "~2.7.0",
+    "prebuild-install": "~2.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prebuild": "~6.2.1",
+    "prebuild-ci": "~2.2.3"
+  },
   "keywords": [],
   "engines": {
     "node": ">=4.0.0",
