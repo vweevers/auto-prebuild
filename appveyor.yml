@@ -21,8 +21,8 @@ install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - ps: if ($env:nodejs_version -eq "5") { npm i npm@latest -g }
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
-  - ps: node-gyp remove $(node -v)
   - npm i --ignore-scripts
+  - ps: node-gyp remove $(node -v)
   - ps: prebuild -t $(node -v) --strip --verbose
 
 test_script:
